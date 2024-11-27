@@ -32,11 +32,6 @@ export default function Navbar({ bgColor = '#110219' }: NavbarProps) {
 
   const user = (session?.user as CustomUser) || null;
 
-  async function getSessionData() {
-    const sessionData = await getSession();
-  }
-  getSessionData();
-
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -77,7 +72,7 @@ export default function Navbar({ bgColor = '#110219' }: NavbarProps) {
               Events
             </Link>
             <Link
-              href="gamePass"
+              href="/gamePass"
               className={`text-md ${
                 activeLink === 'gamePass'
                   ? 'text-fuchsia-600'
@@ -86,6 +81,17 @@ export default function Navbar({ bgColor = '#110219' }: NavbarProps) {
               onClick={() => handleLinkClick('gamePass')}
             >
               Game Pass
+            </Link>
+            <Link
+              href="/products"
+              className={`text-md ${
+                activeLink === 'products'
+                  ? 'text-fuchsia-600'
+                  : 'hover:text-fuchsia-600'
+              }`}
+              onClick={() => handleLinkClick('products')}
+            >
+              Products
             </Link>
             <Link
               href="/aboutus"
@@ -190,6 +196,15 @@ export default function Navbar({ bgColor = '#110219' }: NavbarProps) {
               Game Pass
             </Link>
             <Link
+              href="/products"
+              className={`block px-3 py-2 rounded-md text-base font-medium ${
+                activeLink === 'products' ? 'bg-gray-700' : 'hover:bg-gray-700'
+              }`}
+              onClick={() => handleLinkClick('products')}
+            >
+              Products
+            </Link>
+            <Link
               href="/aboutus"
               className={`block px-3 py-2 rounded-md text-base font-medium ${
                 activeLink === 'aboutUs' ? 'bg-gray-700' : 'hover:bg-gray-700'
@@ -202,7 +217,9 @@ export default function Navbar({ bgColor = '#110219' }: NavbarProps) {
               <Link
                 href={`/user/${encodeURI(session.user.name)}`}
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
-                  activeLink === 'aboutUs' ? 'bg-gray-700' : 'hover:bg-gray-700'
+                  activeLink === 'aboutUs'
+                    ? 'bg-gray-700'
+                    : 'hover:bg-gray-700'
                 }`}
                 onClick={() => handleLinkClick('user/${userid}')}
               >
